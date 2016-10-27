@@ -9,10 +9,27 @@
  */
 list* createlist(int maxElements) {
   /* use malloc() to create a new list */
-  list * newList = malloc(sizeof(list)); // malloc a new list
+  list * newList;
+  int * newArr;
+
+  if (maxElements <= 0) // invalid input
+    return NULL;
+
+  newList = malloc(sizeof(list)); // try to malloc a new list
+
+  if (newList == NULL) // malloc fails
+    return NULL;
+
+  newArr = malloc(maxElements * sizeof(int)); // try to malloc a new array
+
+  if (newArr == NULL) { // malloc fails
+    free(newList);
+    newList = NULL;
+    return NULL;
+  }
 
   // initialize all three member variables of the new list
-  newList->sortedList = malloc(maxElements * sizeof(int));
+  newList->sortedList = newArr;
   newList->size = 0;
   newList->maxSize = maxElements;
 
