@@ -11,7 +11,7 @@ int main(int argc, char const *argv[])
   char *puzzle1 = "3.14159274";
 
   //Puzzle 2 answer here
-  char *puzzle2 = "";
+  char *puzzle2 = "The Secret Life of Pets";
 
 
 
