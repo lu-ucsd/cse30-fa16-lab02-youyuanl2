@@ -14,9 +14,20 @@ get_max_ARM:
     @ YOUR CODE GOES HERE (list *ls is in r0)
     @-----------------------
 
-    @ (your code)
+    @ load member varialbes to registers
+    ldr r4, [r0]
+    ldr r5, [r0, #4]
 
-    @ put your return value in r0 here:    
+    @ check if the int list empty
+    cmp r5, #0
+    MVNEQ r7, #0
+    BEQ end
+
+    sub r5, r5, #1
+    ldr r7, [r4, r5, lsl #2]   @ get max
+
+end:
+    mov r0, r7
 
     @-----------------------
 

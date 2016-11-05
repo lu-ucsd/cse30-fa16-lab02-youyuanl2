@@ -14,9 +14,19 @@ get_min_ARM:
     @ YOUR CODE GOES HERE (list *ls is in r0)
     @-----------------------
 
-    @ (your code)
+    @ load member variables to registers
+    ldr r4, [r0]
+    ldr r5, [r0, #4]
 
-    @ put your return value in r0 here:    
+    @ check if the int list is empty
+    cmp r5, #0
+    MVNEQ r7, #0
+    BEQ end
+
+    ldr r7, [r4]   @ get min
+
+end:
+    mov r0, r7
 
     @-----------------------
 

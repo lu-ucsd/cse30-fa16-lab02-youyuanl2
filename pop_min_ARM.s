@@ -14,10 +14,38 @@ pop_min_ARM:
     @ YOUR CODE GOES HERE (list *ls is in r0)
     @-----------------------
 
-    @ (your code)
+    @ load member variables to registers
+    ldr r4, [r0]
+    ldr r5, [r0, #4]
 
-    @ put your return value in r0 here:
+    @ check if the int list is empty
+    cmp r5, #0
+    BEQ err
 
+    ldr r7, [r4] @ get min
+
+    mov r8, #1
+    mov r9, #0
+@ use for loop to remove min from the int list
+for:
+    cmp r8, r5
+    BGE endfor
+    ldr r10, [r4, r8, lsl #2]
+    str r10, [r4, r9, lsl #2]
+    add r8, r8, #1
+    add r9, r9, #1
+    B for
+endfor:
+    sub r5, r5, #1
+    str r5, [r0, #4]
+    B end
+
+err:
+    mvn r7, #0
+
+end:
+    mov r0, r7
+    
     @-----------------------
 
     @ restore caller's registers
