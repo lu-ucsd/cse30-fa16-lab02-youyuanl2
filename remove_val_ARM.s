@@ -47,8 +47,8 @@ while2:
     B while2
 
 @ use for loop to remove all occurence of val in the int list
-for:
     sub r8, r7, r11
+for:
     cmp r7, r5
     BGE end
     ldr r9, [r4, r7, lsl #2]
