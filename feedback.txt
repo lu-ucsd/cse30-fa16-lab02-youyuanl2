@@ -1,0 +1,4 @@
+Nice work! You earned a perfect score of 51.  
+I like how you generously commented your ARM code and your C code.  
+In regards to your test cases, using assert is a good way to avoid using too many repeated if/else statements.  
+Keep it up!
